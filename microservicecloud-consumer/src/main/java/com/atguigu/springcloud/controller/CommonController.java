@@ -60,7 +60,7 @@ public class CommonController {
     public ResultData providerCheckHealthy() {
         ResultData resultData = restTemplate.getForObject(applicationStaticConfig.getProviderUrl() + "/checkHealthy", ResultData.class);
         List<Map> value = (List<Map>) resultData.getOther().get("RequestChainMessage");
-        value.add(getRequestChainMessage());
+        value.add(0,getRequestChainMessage());
         other.put("RequestChainMessage", value);
         resultData.setOther(other);
         return resultData;
@@ -71,7 +71,7 @@ public class CommonController {
     public ResultData gatewayCheckHealthy() {
         ResultData resultData = restTemplate.getForObject(applicationStaticConfig.getGatewayUrl() + "/checkHealthy", ResultData.class);
         List<Map> value = (List<Map>) resultData.getOther().get("RequestChainMessage");
-        value.add(getRequestChainMessage());
+        value.add(0,getRequestChainMessage());
         other.put("RequestChainMessage", value);
         resultData.setOther(other);
         return resultData;
