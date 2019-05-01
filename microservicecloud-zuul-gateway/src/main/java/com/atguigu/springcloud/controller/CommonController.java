@@ -30,7 +30,6 @@ public class CommonController {
 
     @RequestMapping(value = "/checkHealthy", method = RequestMethod.GET)
     public ResultData checkHealthy() {
-        other.put("LocalApplicationName", applicationStaticConfig.getApplicationName());
         ResultData resultData = new ResultData()
                 .setResultCode(ResultCode.SUCCESS)
                 .setContent(client.getServices()

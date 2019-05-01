@@ -46,7 +46,6 @@ public class CommonController {
     @ApiOperation(value = "Consumer健康监测")
     @RequestMapping(value = "/consumerCheckHealthy", method = RequestMethod.GET)
     public ResultData consumerCheckHealthy() {
-        other.put("LocalApplicationName", applicationStaticConfig.getApplicationName());
         ResultData resultData = new ResultData()
                 .setResultCode(ResultCode.SUCCESS)
                 .setContent(client.getServices()
@@ -59,10 +58,9 @@ public class CommonController {
     @ApiOperation(value = "Provider健康监测")
     @RequestMapping(value = "/providerCheckHealthy", method = RequestMethod.GET)
     public ResultData providerCheckHealthy() {
-        other.put("LocalApplicationName", applicationStaticConfig.getApplicationName());
         ResultData resultData = restTemplate.getForObject(applicationStaticConfig.getProviderUrl() + "/checkHealthy", ResultData.class);
         List<Map> value = (List<Map>) resultData.getOther().get("RequestChainMessage");
-        value.add(0, getRequestChainMessage());
+        value.add(getRequestChainMessage());
         other.put("RequestChainMessage", value);
         resultData.setOther(other);
         return resultData;
@@ -71,11 +69,9 @@ public class CommonController {
     @ApiOperation(value = "Gateway健康监测")
     @RequestMapping(value = "/gatewayCheckHealthy", method = RequestMethod.GET)
     public ResultData gatewayCheckHealthy() {
-
-        other.put("LocalApplicationName", applicationStaticConfig.getApplicationName());
         ResultData resultData = restTemplate.getForObject(applicationStaticConfig.getGatewayUrl() + "/checkHealthy", ResultData.class);
         List<Map> value = (List<Map>) resultData.getOther().get("RequestChainMessage");
-        value.add(0, getRequestChainMessage());
+        value.add(getRequestChainMessage());
         other.put("RequestChainMessage", value);
         resultData.setOther(other);
         return resultData;
