@@ -1,0 +1,9 @@
+# spring:
+#   cloud:
+#     config:
+#       name: microservicecloud-provider #需要从github上读取的资源名称，注意没有yml后缀名
+#       #profile配置是什么就取什么配置dev or test
+#       profile: dev
+#       label: master
+#       uri: http://microservicecloud-config-server  #SpringCloudConfig获取的服务地址
+

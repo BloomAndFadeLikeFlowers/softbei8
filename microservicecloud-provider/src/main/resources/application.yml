@@ -1,0 +1,14 @@
+spring:
+ profiles:
+   active: dev
+
+info:
+ app.name: atguigu-microservicecloud
+ company.name: www.atguigu.com
+ build.artifactId: $project.artifactId$
+ build.version: $project.version$
+
+microservicecloud.url:
+ provider: http://MICROSERVICECLOUD-PROVIDER
+ consumer: http://MICROSERVICECLOUD-CONSUME
+ gateway: http://MICROSERVICECLOUD-ZUUL-GATEWAY

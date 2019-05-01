@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: dev
+
+zuul:
+#  prefix: /atguigu
+ ignored-services: "*"
+ routes:
+   consumer:
+     serviceId: microservicecloud-consumer
+     path: /consumer/**
+   provider:
+     serviceId: microservicecloud-provider
+     path: /provider/**
+   gateway:
+     serviceId: microservicecloud-zuul-gateway
+     path: /gateway/**
+
+microservicecloud.url:
+ provider: http://MICROSERVICECLOUD-PROVIDER
+ consumer: http://MICROSERVICECLOUD-CONSUME
+ gateway: http://MICROSERVICECLOUD-ZUUL-GATEWAY
+info:
+ app.name: atguigu-microcloud
+ company.name: www.atguigu.com
+ build.artifactId: $project.artifactId$
+ build.version: $project.version$
