@@ -12,6 +12,7 @@
 
 ### IntelliJ IDEA ###
 .idea
+*.iml
 ./*/.idea
 ./*/*.iws
 ./*/*.iml
